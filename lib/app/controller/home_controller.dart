@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wueonman/app/data/model/meeting.dart';
 
@@ -11,10 +8,10 @@ class HomeController extends GetxController {
   HomeController({required this.repository});
 
   final RxList<Meeting> _meetingList = <Meeting>[].obs;
-  get meetingList => _meetingList;
-  set meetingList(list) => _meetingList.value = list;
+  RxList<Meeting> get meetingList => _meetingList;
+  set meetingList(List<Meeting> list) => _meetingList.value = list;
 
-  void getAll() async {
+  Future<void> getAll() async {
     meetingList = await repository.getAll();
   }
 }
